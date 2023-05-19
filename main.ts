@@ -18,13 +18,13 @@ type Five = Add<Two, Three>;
 type Mul<X, Y> = X extends Zero
   ? Zero
   : X extends { succ: Zero }
-  ? Add<X, Y>
+  ? Y
   : X extends { succ: unknown }
-  ? Mul<X["succ"], Add<X, Y>>
+  ? Add<Y, Mul<X["succ"], Y>>
   : never;
 
 type Six = Mul<Two, Three>;
-type Fifteen = Mul<Five, Three>;
+type Fifteen = Mul<Three, Five>;
 
 type Eq<A, B> = A extends B ? (B extends A ? true : false) : false;
 
