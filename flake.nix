@@ -12,7 +12,7 @@
       in {
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
-            nodejs_latest
+            bun
             nodePackages.typescript-language-server
             nodePackages.prettier
           ];
